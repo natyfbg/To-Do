@@ -1,20 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- ...other head elements... -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <!-- Adjust the href based on your project setup -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
         <h1>Todo App</h1>
-        <!-- Additional header elements -->
+        <!-- Theme Toggle Switch -->
+        <div class="theme-switcher">
+            <label class="switch">
+                <input type="checkbox" id="theme-toggle">
+                <span class="slider round"></span>
+            </label>
+        </div>
     </header>
     
+    
     <main>
+        <!-- Form to add todos -->
         <section class="todo-form-container">
-            <!-- Form to add todos will go here -->
+            <form id="todo-form">
+              <input type="text" id="todo-title" placeholder="Title" required />
+              <textarea id="todo-description" placeholder="Description"></textarea>
+              <input type="date" id="todo-dueDate" required />
+              <select id="todo-priority">
+                <option value="High">High</option>
+                <option value="Medium" selected>Medium</option>
+                <option value="Low">Low</option>
+              </select>
+              <button type="submit">Add Todo</button>
+            </form>
         </section>
+
+        <!-- Container for todo items -->
         <section class="todo-list">
-            <!-- Todo items will be appended here -->
             <div id="app"></div>
         </section>
     </main>
@@ -23,6 +48,7 @@
         <p>&copy; 2024 Todo App</p>
     </footer>
     
-    <!-- Your script tags -->
+    <!-- Scripts at the bottom for better page load performance -->
+    <script src="main.js"></script>
 </body>
 </html>

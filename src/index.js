@@ -39,5 +39,24 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log('Form data invalid, new todo not created');
       // Handle invalid input feedback to user here
     }
+
+
+
+//     const themeToggle = document.getElementById('theme-toggle');
+//   themeToggle.addEventListener('change', () => {
+//     document.body.classList.toggle('dark-theme');
+//   });
+
+
   });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Existing code to load and display todos...
+    
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('change', () => {
+      document.body.classList.toggle('dark-theme');
+    });
+  });
+  

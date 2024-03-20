@@ -152,3 +152,164 @@ header {
     }
   }
   
+  /* Todo Item */
+.todo {
+    background-color: #fff;
+    border-left: 5px solid #007bff; /* Use a color to indicate priority or status */
+    margin-bottom: 1em;
+    padding: 15px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out; /* For a subtle hover effect */
+  }
+  
+  .todo:hover {
+    transform: translateY(-2px);
+  }
+  
+  .todo h3 {
+    font-size: 1.25em;
+    margin-bottom: 0.5em;
+  }
+  
+  .todo .todo-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .todo .todo-actions {
+    /* Place edit, delete buttons side by side */
+  }
+  
+  .todo .edit-todo,
+  .todo .delete-todo {
+    /* Style your edit and delete buttons */
+  }
+  
+  .todo .toggle-complete {
+    /* Style your complete checkbox */
+  }
+  
+  /* ... Add any additional styling you see fit ... */
+  
+  /* Button Interaction Effects */
+.edit-todo:hover,
+.delete-todo:hover {
+  /* Define a hover state that increases contrast or changes color */
+}
+
+/* Completion Indication */
+.todo.complete {
+  /* Optional: change background color, text-decoration, or font-style */
+}
+
+
+/* Custom Checkbox */
+.toggle-complete {
+    appearance: none;
+    background-color: #fff;
+    margin: 0;
+    font: inherit;
+    color: currentColor;
+    width: 2em;
+    height: 2em;
+    border: 1px solid #c0c0c0;
+    border-radius: 0.15em;
+    transform: translateY(-0.075em);
+    display: grid;
+    place-content: center;
+  }
+  
+  .toggle-complete::before {
+    content: '';
+    width: 1.5em;
+    height: 1.5em;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--form-control-color);
+    /* ... add the rest of your styling ... */
+  }
+  
+  .toggle-complete:checked::before {
+    transform: scale(1);
+  }
+
+  
+  /* Hover and Active States */
+button:hover,
+input[type='checkbox']:hover {
+  /* Define hover styles for buttons and custom checkboxes */
+}
+
+button:active {
+  /* Define active styles to give feedback on click */
+}
+
+/* Theme Switcher Styles */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+  }
+  
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+  
+
+  /* Dark Theme Styles */
+body.dark-theme {
+    background-color: #333;
+    color: #f4f4f4;
+  }
+  
+  body.dark-theme header,
+  body.dark-theme footer {
+    color: #f4f4f4;
+  }
+  
+  /* Adjust more elements as needed */
+  
