@@ -1,62 +1,37 @@
-import './styles.css';
-import { createTodo } from './todo';
-import { createTodoItem } from './ui';
-import { saveTodos, loadTodos } from './storage';
+const inputBox = document.getElementById("input-box")
+const listContainer = document.getElementById("list-container")
 
-document.addEventListener('DOMContentLoaded', () => {
-  const app = document.getElementById('app');
-
-  // Load todos and filter out any invalid items
-  let todos = loadTodos();
-  todos = todos.filter(todo => todo.title && todo.description && todo.dueDate && todo.priority);
-  console.log('Filtered loaded todos:', todos);
-
-  todos.forEach(todo => {
-    console.log('Appending todo:', todo);
-    app.appendChild(createTodoItem(todo, todos, saveTodos));
-  });
-
-  document.getElementById('todo-form').addEventListener('submit', event => {
-    event.preventDefault();
-
-    const title = document.getElementById('todo-title').value.trim();
-    const description = document.getElementById('todo-description').value.trim();
-    const dueDate = document.getElementById('todo-dueDate').value;
-    const priority = document.getElementById('todo-priority').value;
-
-    // Validate form input before creating a new todo
-    if (title && description && dueDate && priority) {
-      const newTodo = createTodo(title, description, dueDate, priority);
-      todos.push(newTodo);
-      saveTodos(todos);
-      console.log('New todo created and saved:', newTodo);
-
-      const todoElement = createTodoItem(newTodo, todos, saveTodos);
-      app.appendChild(todoElement);
-
-      document.getElementById('todo-form').reset();
-    } else {
-      console.log('Form data invalid, new todo not created');
-      // Handle invalid input feedback to user here
+function addTask(){
+    if(inputBox.value === ''){
+        alert("Empty entry")
     }
+    else{
+        let li = document.createElement("li");
+        li.innerHTML = inputBox.value;
+        listContainer.appendChild(li)
+        let span = document.createElement("span")
+        span.innerHTML = "\u00d7"
+        li.appendChild(span)
+    }
+    inputBox.value = "";
+    saveData();
+}
 
+listContainer.addEventListener("click", function(e){
+    if(e.target.tagName === "LI"){
+        e.target.classList.toggle("checked")
+        saveData();
+    }
+    else if(e.target.tagName == "SPAN"){
+        e.target.parentElement.remove();
+        saveData();
+    }
+},false)
 
-
-//     const themeToggle = document.getElementById('theme-toggle');
-//   themeToggle.addEventListener('change', () => {
-//     document.body.classList.toggle('dark-theme');
-//   });
-
-
-  });
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    // Existing code to load and display todos...
-    
-    const themeToggle = document.getElementById('theme-toggle');
-    themeToggle.addEventListener('change', () => {
-      document.body.classList.toggle('dark-theme');
-    });
-  });
-  
+function saveData(){
+    localStorage.setItem("data", listContainer.innerHTML);
+}
+function showTask(){
+    listContainer.innerHTML = localStorage.getItem("data");
+}
+showTask()
